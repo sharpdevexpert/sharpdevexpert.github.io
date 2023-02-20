@@ -11,6 +11,7 @@
   <SupportUrl DefaultValue="https://www.supplier.io/contact-us"/>
   <AppDomains>
     <AppDomain>https://api.sustainably.ai/</AppDomain>
+    <AppDomain>https://sharpdevexpert.github.io/</AppDomain>
 </AppDomains>
   <Hosts>
     <Host Name="Document"/>
