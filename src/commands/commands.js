@@ -49,21 +49,14 @@ var proxyServer = "https://cors-anywhere.herokuapp.com/";
 var endPoint = "https://api.sustainably.ai/qaquery";
 
 function generate(event) {
-  Office.context.document.setSelectedDataAsync("Vam Vasu!", function (asyncResult) {
-    if (asyncResult.status === "failed") {
-      // Show error message.
+  Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
+    if (asyncResult.status == Office.AsyncResultStatus.Failed) {
+      //write('Action failed. Error: ' + asyncResult.error.message);
     } else {
-      // Show success message.
+      var question = asyncResult.value;
+      callService(question);
     }
   });
-  // Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
-  //   if (asyncResult.status == Office.AsyncResultStatus.Failed) {
-  //     //write('Action failed. Error: ' + asyncResult.error.message);
-  //   } else {
-  //     var question = asyncResult.value;
-  //     callService(question);
-  //   }
-  // });
 
   event.completed();
 }
