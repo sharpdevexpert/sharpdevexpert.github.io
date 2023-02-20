@@ -98,8 +98,8 @@
         <bt:Image id="Login.64x64" DefaultValue="https://sharpdevexpert.github.io/assets/Login.64x64.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Commands.Url" DefaultValue="https://sharpdevexpert.github.io/commands.html"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://sharpdevexpert.github.io/taskpane.html"/>
+        <bt:Url id="Commands.Url" DefaultValue="https://sharpdevexpert.github.io/src/commands/commands.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://sharpdevexpert.github.io/src/taskpane/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="CommandsGroup.Label" DefaultValue="supplier.io"/>
