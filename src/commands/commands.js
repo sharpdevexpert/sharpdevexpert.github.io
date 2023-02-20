@@ -49,21 +49,28 @@ var proxyServer = "https://cors-anywhere.herokuapp.com/";
 var endPoint = "https://api.sustainably.ai/qaquery";
 
 function generate(event) {
-  Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
-    if (asyncResult.status == Office.AsyncResultStatus.Failed) {
-      //write('Action failed. Error: ' + asyncResult.error.message);
+  Office.context.document.setSelectedDataAsync("Vam Vasu!", function (asyncResult) {
+    if (asyncResult.status === "failed") {
+      // Show error message.
     } else {
-      var question = asyncResult.value;
-      callService(question);
+      // Show success message.
     }
   });
+  // Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
+  //   if (asyncResult.status == Office.AsyncResultStatus.Failed) {
+  //     //write('Action failed. Error: ' + asyncResult.error.message);
+  //   } else {
+  //     var question = asyncResult.value;
+  //     callService(question);
+  //   }
+  // });
 
   event.completed();
 }
 
 function callService(question) {
   $.ajax({
-    url: proxyServer + "https://api.sustainably.ai/qaquery",
+    url: proxyServer + endPoint,
     type: "POST",
     data: JSON.stringify({
       "prompt": question,
