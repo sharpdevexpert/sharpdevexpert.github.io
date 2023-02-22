@@ -48,7 +48,20 @@ g.action = action;
 var proxyServer = "https://cors-anywhere.herokuapp.com/";
 var endPoint = "https://api.sustainably.ai/qaquery";
 
-function generate(event) {
+function generatefunc(event) {
+  Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
+    if (asyncResult.status == Office.AsyncResultStatus.Failed) {
+      //write('Action failed. Error: ' + asyncResult.error.message);
+    } else {
+      var question = asyncResult.value;
+      callService(question);
+    }
+  });
+
+  event.completed();
+}
+
+function generatefunk(event) {
   Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
     if (asyncResult.status == Office.AsyncResultStatus.Failed) {
       //write('Action failed. Error: ' + asyncResult.error.message);
@@ -88,4 +101,5 @@ function callService(question) {
     });
 }
 
-Office.actions.associate("generate", generate);
+Office.actions.associate("generatefunc", generatefunc);
+Office.actions.associate("generatefunk", generatefunk);
