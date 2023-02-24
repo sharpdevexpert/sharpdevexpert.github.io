@@ -26,7 +26,7 @@
           <FunctionFile resid="Commands.Url"/>
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
             <OfficeTab id="TabHome">
-              <Group id="Suplier.io">
+              <Group id="RFPNinja">
                 <Label resid="CommandsGroup.Label"/>
                 <Icon>
                   <bt:Image size="16" resid="LogoBlue16x16" />
