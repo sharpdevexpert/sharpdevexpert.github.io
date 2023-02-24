@@ -62,7 +62,7 @@
                         <bt:Image size="80" resid="Login.64x64" />
                     </Icon>
                   <Action xsi:type="ExecuteFunction">
-                        <FunctionName>generatefunk</FunctionName>
+                        <FunctionName>generate</FunctionName>
                     </Action>
                 </Control>
               </Group>
@@ -70,12 +70,12 @@
           </ExtensionPoint>
           <ExtensionPoint xsi:type="ContextMenu">
             <OfficeMenu id="ContextMenuText">
-                <Control xsi:type="Button" id="Button1Id1">
-                    <Label resid="ContextMenu.Label" />
-                    <Tooltip resid="ContextMenu.ToolTip" />
+                <Control xsi:type="Button" id="GenerateButtonContext">
+                    <Label resid="GenerateButtonContext.Label" />
+                    <Tooltip resid="GenerateButtonContext.ToolTip" />
                     <Supertip>
-                        <Title resid="ContextMenu.Label" />
-                        <Description resid="ContextMenu.ToolTip" />
+                        <Title resid="GenerateButtonContext.Label" />
+                        <Description resid="GenerateButtonContext.ToolTip" />
                     </Supertip>
                     <Icon>
                         <bt:Image size="16" resid="Login.16x16" />
@@ -83,7 +83,7 @@
                         <bt:Image size="80" resid="Login.64x64" />
                     </Icon>
                     <Action xsi:type="ExecuteFunction">
-                        <FunctionName>generatefunc</FunctionName>
+                        <FunctionName>generate</FunctionName>
                     </Action>
                 </Control>
             </OfficeMenu>
@@ -105,12 +105,12 @@
         <bt:String id="CommandsGroup.Label" DefaultValue="supplier.io"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Log in"/>
         <bt:String id="GenerateButton.Label" DefaultValue="Generate"/>
-        <bt:String id="ContextMenu.Label" DefaultValue="Generate"/>
+        <bt:String id="GenerateButtonContext.Label" DefaultValue="Generate"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Log in"/>
         <bt:String id="GenerateButton.Tooltip" DefaultValue="Generate selected text"/>
-        <bt:String id="ContextMenu.ToolTip" DefaultValue="Generate selected text"/>
+        <bt:String id="GenerateButtonContext.Tooltip" DefaultValue="Generate selected text"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
