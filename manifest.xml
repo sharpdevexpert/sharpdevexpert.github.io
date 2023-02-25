@@ -6,8 +6,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="RFP Ninja"/>
   <Description DefaultValue="A template to get started."/>
-  <IconUrl DefaultValue="https://sharpdevexpert.github.io/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://sharpdevexpert.github.io/assets/icon-64.png"/>
+  <IconUrl DefaultValue="https://sharpdevexpert.github.io/assets/LogoBlue32x32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://sharpdevexpert.github.io/assets/LogoBlue80x80.png"/>
   <SupportUrl DefaultValue="https://app.rfpninja.com/"/>
   <AppDomains>
     <AppDomain>https://sharpdevexpert.github.io/</AppDomain>
@@ -106,8 +106,8 @@
       <bt:ShortStrings>
         <bt:String id="CommandsGroup.Label" DefaultValue="RFP Ninja"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Log in"/>
-        <bt:String id="GenerateButton.Label" DefaultValue="Generate"/>
-        <bt:String id="ContextMenu.Label" DefaultValue="Generate"/>
+        <bt:String id="GenerateButton.Label" DefaultValue="Ninja Generate"/>
+        <bt:String id="ContextMenu.Label" DefaultValue="Ninja Generate"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Log in"/>
