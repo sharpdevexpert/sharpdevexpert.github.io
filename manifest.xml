@@ -71,6 +71,7 @@
             <OfficeMenu id="ContextMenuText">
                 <Control xsi:type="Button" id="Button1Id1">
                     <Label resid="ContextMenu.Label" />
+                    <Tooltip resid="ContextMenu.ToolTip" />
                     <Supertip>
                       <Title resid="ContextMenu.Label" />
                       <Description resid="ContextMenu.ToolTip" />

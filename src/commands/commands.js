@@ -49,11 +49,14 @@ var proxyServer = "https://cors-anywhere.herokuapp.com/";
 var endPoint = "https://api.sustainably.ai/qaquery";
 
 function generate(event) {
-  var selectedText = getSelectedText();
-
-  if (selectedText) {
-    callService(selectedText);
-  }
+  Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
+    if (asyncResult.status == Office.AsyncResultStatus.Failed) {
+      //write('Action failed. Error: ' + asyncResult.error.message);
+    } else {
+      var question = asyncResult.value;
+      callService(question);
+    }
+  });
 
   event.completed();
 }
@@ -71,7 +74,14 @@ function callService(question) {
     contentType: "application/json",
   })
     .done(function (data) {
-      setSelectedText(data.prompt + data.qaresponse);
+      //return data.qaresponse;
+      Office.context.document.setSelectedDataAsync(data.prompt + data.qaresponse + "\n", function (asyncResult) {
+        if (asyncResult.status === "failed") {
+          // Show error message.
+        } else {
+          // Show success message.
+        }
+      });
     })
     .fail(function (status) {
       return JSON.stringify(status);
@@ -79,23 +89,3 @@ function callService(question) {
 }
 
 Office.actions.associate("generate", generate);
-
-function setSelectedText(newText) {
-  Office.context.document.setSelectedDataAsync(newText, function (asyncResult) {
-    if (asyncResult.status === "failed") {
-
-    } else {
-
-    }
-  });
-}
-
-function getSelectedText() {
-  Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
-    if (asyncResult.status == Office.AsyncResultStatus.Failed) {
-      return null;
-    } else {
-      return asyncResult.value;
-    }
-  });
-}
