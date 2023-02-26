@@ -55,6 +55,7 @@ function generate(event) {
     } else {
       var question = asyncResult.value;
       callService(question);
+      openDialog();
     }
   });
 
@@ -86,6 +87,14 @@ function callService(question) {
     .fail(function (status) {
       return JSON.stringify(status);
     });
+}
+
+function openDialog() {
+  Office.context.ui.displayDialogAsync(
+    "https://sharpdevexpert.github.io/src/dialog.html",
+    { height: 50, width: 50 },
+    null
+  );
 }
 
 Office.actions.associate("generate", generate);
