@@ -92,7 +92,7 @@ function callService(question) {
 function openDialog() {
   Office.context.ui.displayDialogAsync(
     "https://sharpdevexpert.github.io/src/dialog.html",
-    { height: 50, width: 50 },
+    { height: 50, width: 50, displayInIframe: true },
     null
   );
 }
