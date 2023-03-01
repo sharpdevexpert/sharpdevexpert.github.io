@@ -90,7 +90,11 @@ function callService(question) {
 }
 
 function openDialog() {
-  Office.context.ui.displayDialogAsync("https://localhost:3000/src/dialog.html", { displayInIframe: true }, null);
+  Office.context.ui.displayDialogAsync(
+    "https://sharpdevexpert.github.io/src/dialog.html",
+    { displayInIframe: true },
+    null
+  );
 }
 
 Office.actions.associate("generate", generate);
