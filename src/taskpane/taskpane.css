@@ -121,3 +121,7 @@ b {
     padding: 18px 15px;
     min-width: inherit;
 }
+
+.bg-transparent {
+    background: transparent;
+}
