@@ -132,7 +132,7 @@ function callService(question) {
 
 function openDialog() {
   Office.context.ui.displayDialogAsync(
-    "https://localhost:3000/dialog.html",
+    "https://sharpdevexpert.github.io/src/dialog.html",
     { height: 10, width: 15, displayInIframe: true },
     function (asyncResult) {
       dialog = asyncResult.value;
