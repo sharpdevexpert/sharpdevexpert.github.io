@@ -17,3 +17,17 @@
     <p class="ms-font-m ms-fontColor-neutralSecondary ms-fontWeight-semilight">RFP Ninja Loading Answer...</p>
 </body>
 </html>
+
+<script>
+    Office.onReady()
+    .then(function() {
+        Office.context.ui.addHandlerAsync(
+            Office.EventType.DialogParentMessageReceived,
+            onMessageFromParent);
+    });
+
+function onMessageFromParent(arg) {
+    const messageFromParent = JSON.parse(arg.message);
+    $('p').text(messageFromParent.name);
+}
+</script>

@@ -45,6 +45,8 @@ const g = getGlobal();
 // The add-in command functions need to be available in global scope
 g.action = action;
 
+var dialog;
+
 var localStorageToken = "rfpninjatoken";
 
 var proxyServer = "https://cors-anywhere.herokuapp.com/";
@@ -81,29 +83,66 @@ function callService(question) {
     },
   })
     .done(function (data) {
+      try {
+        dialog.close();
+      } catch (err) { }
+
       if (data.status == "success") {
-        Office.context.document.setSelectedDataAsync(
-          data.response.prompt + data.response.response + "\n",
-          function (asyncResult) {
-          if (asyncResult.status === "failed") {
-            // Show error message.
-          } else {
-            // Show success message.
+        if (!data.response["returned-an-error"]) {
+          var prompt = "";
+
+          if (!data.response.prompt) {
+            prompt = data.response.prompt;
           }
-        });
+
+          Office.context.document.setSelectedDataAsync(prompt + data.response.response, function (asyncResult) {
+            if (asyncResult.status === "failed") {
+              // Show error message.
+            } else {
+              // Show success message.
+            }
+          });
+        } else {
+          var message = data.response["error-status-message"];
+
+          var messageToDialog = JSON.stringify({
+            name: message,
+          });
+
+          openDialog();
+          dialog.messageChild(messageToDialog);
+        }
       }
     })
     .fail(function (data) {
-      return JSON.stringify(data);
+      var message = data.responseText;
+
+      if (data.responseJSON) {
+        message = data.responseJSON.translation;
+      }
+
+      var messageToDialog = JSON.stringify({
+        name: message,
+      });
+
+      openDialog();
+      dialog.messageChild(messageToDialog);
     });
 }
 
 function openDialog() {
   Office.context.ui.displayDialogAsync(
-    "https://sharpdevexpert.github.io/src/dialog.html",
+    "https://localhost:3000/dialog.html",
     { height: 10, width: 15, displayInIframe: true },
-    null
+    function (asyncResult) {
+      dialog = asyncResult.value;
+      dialog.addEventHandler(Office.EventType.DialogMessageReceived, processMessage);
+    }
   );
+}
+
+function processMessage(arg) {
+  dialog.close();
 }
 
 Office.actions.associate("generate", generate);
