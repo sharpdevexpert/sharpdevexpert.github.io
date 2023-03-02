@@ -61,6 +61,9 @@ function loginFunc() {
 }
 
 function logoutFunc() {
+  $("#username").val("");
+  $("#password").val("");
+
   window.localStorage.removeItem(localStorageToken);
   showNotification("Success", "Successfully logged out");
   handleLoginDivs();
