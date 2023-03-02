@@ -31,7 +31,7 @@ Office.onReady((info) => {
   }
 });
 
-export async function loginFunc() {
+function loginFunc() {
   var username = $("#username").val();
   var password = $("#password").val();
 
@@ -60,7 +60,7 @@ export async function loginFunc() {
     });
 }
 
-export async function logoutFunc() {
+function logoutFunc() {
   window.localStorage.removeItem(localStorageToken);
   showNotification("Success", "Successfully logged out");
   handleLoginDivs();
