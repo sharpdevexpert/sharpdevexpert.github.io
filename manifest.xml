@@ -5,7 +5,7 @@
   <ProviderName>RFP Ninja</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="RFP Ninja"/>
-  <Description DefaultValue="A template to get started."/>
+  <Description DefaultValue="RFP Wizard"/>
   <IconUrl DefaultValue="https://sharpdevexpert.github.io/assets/LogoBlue32x32.png"/>
   <HighResolutionIconUrl DefaultValue="https://sharpdevexpert.github.io/assets/LogoBlue80x80.png"/>
   <SupportUrl DefaultValue="https://app.rfpninja.com/"/>
