@@ -66,15 +66,58 @@
  }
  
 .ms-Button.ms-Button--hero .ms-Button-label {
-  color: #0078d7;
+  color: #010C80;
 }
 
 .ms-Button.ms-Button--hero:hover .ms-Button-label,
 .ms-Button.ms-Button--hero:focus .ms-Button-label{
-  color: #005a9e;
+  color: #010C80;
   cursor: pointer;
+}
+
+.ms-Button.ms-Button--primary {
+    background-color: #010c80;
+    border-color: #010c80;
+}
+.ms-Button.ms-Button--primary .ms-Button-label {
+    color: #fff;
+}
+.ms-Button.ms-Button--primary:hover {
+    background-color: #010c80;
+    border-color: #010c80;
+}
+.ms-Button.ms-Button--primary:focus {
+    background-color: #010c80;
+    border-color: #010c80;
+}
+.ms-Button.ms-Button--primary:active {
+    background-color: #010c80;
+    border-color: #010c80;
+}
+.ms-Button.ms-Button--primary:disabled, .ms-Button.ms-Button--primary.is-disabled {
+    background-color: #010c80;
+    border-color: #010c80;
+}
+.ms-Button.ms-Button--primary:disabled .ms-Button-label, .ms-Button.ms-Button--primary.is-disabled .ms-Button-label {
+    color: #010c80;
 }
 
 b {
     font-weight: bold;
+}
+
+#notification-popup.MessageBanner {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    text-align: left;
+    height: inherit;
+    min-width: inherit;
+    z-index: 3;
+}
+
+#notification-popup .MessageBanner-text {
+    margin: 0;
+    padding: 18px 15px;
+    min-width: inherit;
 }

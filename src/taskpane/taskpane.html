@@ -2,7 +2,7 @@
 <!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -12,10 +12,17 @@
 
     <!-- Office JavaScript API -->
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+    <!-- jQuery API -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
     <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.components.min.css" />
     <!-- Template styles -->
     <link href="taskpane.css" rel="stylesheet" type="text/css" />
+    <script src="taskpane.js"></script>
+
+    <link href="MessageBanner.css" rel="stylesheet" type="text/css" />
+    <script src="MessageBanner.js"></script>
 </head>
 
 <body class="ms-font-m ms-welcome ms-Fabric">
@@ -23,8 +30,51 @@
         <img width="64" height="64" src="../../assets/LogoTextBlue80x80.png" alt="RFP Ninja" title="RFP Ninja" />
         <h1 class="ms-font-su">Welcome</h1>
     </header>
+    <section id="sideload-msg" class="ms-welcome__main">
+        <h2 class="ms-font-xl">Loading RFPNinja Add-in...</h2>
+    </section>
     <main id="app-body" class="ms-welcome__main" style="display: none;">
-        <h2 class="ms-font-xl">Log in</h2>
+        <div id="logInDiv" style="padding-top: 10px;">
+            <div class="ms-TextField ms-TextField--underlined">
+                <label class="ms-Label" style="color:#010C80; font-weight:bold;">Username</label>
+                <input id="username" aria-label="username" class="ms-TextField-field" type="text" value="" placeholder="">
+            </div>
+    
+            <div class="ms-TextField ms-TextField--underlined">
+                <label class="ms-Label" style="color:#010C80; font-weight:bold;">Password</label>
+                <input id="password" aria-label="password" class="ms-TextField-field" type="password" value="" placeholder="">
+            </div>
+    
+            <div style="display: flex;justify-content: right;">
+                <button id="loginButton" class="ms-Button ms-Button--primary">
+                    <span class="ms-Button-label">Log in</span>
+                </button>
+            </div>
+        </div>
+    
+        <div id="logOutDiv">
+            <p>You're logged in to RFP Ninja and can use all its features.</p>
+            <div style="display: flex;justify-content: center;">
+                <button id="logoutButton" class="ms-Button ms-Button--primary">
+                    <span class="ms-Button-label">Log out</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Component used for displaying notifications -->
+        <div class="MessageBanner" id="notification-popup">
+            <div class="MessageBanner-content">
+                <div class="MessageBanner-text">
+                    <div class="MessageBanner-clipper">
+                        <div class="ms-font-m-plus ms-fontWeight-semibold" id="notification-header"></div>
+                        <div class="ms-font-m ms-fontWeight-semilight" id="notification-body"></div>
+                    </div>
+                </div>
+                <button class="MessageBanner-expand" style="display:none"><i class="ms-Icon ms-Icon--chevronsDown"></i> </button>
+                <div class="MessageBanner-action"></div>
+            </div>
+            <button class="MessageBanner-close"> <i class="ms-Icon ms-Icon--ChromeClose"></i> </button>
+        </div>
     </main>
 </body>
 

@@ -45,8 +45,10 @@ const g = getGlobal();
 // The add-in command functions need to be available in global scope
 g.action = action;
 
+var localStorageToken = "rfpninjatoken";
+
 var proxyServer = "https://cors-anywhere.herokuapp.com/";
-var endPoint = "https://api.sustainably.ai/qaquery";
+var endPoint = "https://app.rfpninja.com/version-test/api/1.1/wf/get-prompt-response";
 
 function generate(event) {
   Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
@@ -63,38 +65,41 @@ function generate(event) {
 }
 
 function callService(question) {
+  var token = window.localStorage.getItem(localStorageToken);
+
   $.ajax({
     url: proxyServer + endPoint,
     type: "POST",
     data: JSON.stringify({
-      "prompt": question,
-      "API_KEY": "H888biE9ADWVYSKrmU7c53Yrv",
-      "response-format": "Mutiple Paragraphs",
-      "data-set": "Sales",
+      prompt: question,
+      format: "Mutiple Paragraphs",
+      dataset: "Sales",
     }),
     contentType: "application/json",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
   })
     .done(function (data) {
-      //return data.qaresponse;
-      Office.context.document.setSelectedDataAsync(data.prompt + data.qaresponse + "\n", function (asyncResult) {
-        if (asyncResult.status === "failed") {
-          // Show error message.
-        } else {
-          // Show success message.
-        }
-      });
+      if (data.status == "success") {
+        Office.context.document.setSelectedDataAsync(
+          data.response.prompt + data.response.response + "\n",
+          function (asyncResult) {
+          if (asyncResult.status === "failed") {
+            // Show error message.
+          } else {
+            // Show success message.
+          }
+        });
+      }
     })
-    .fail(function (status) {
-      return JSON.stringify(status);
+    .fail(function (data) {
+      return JSON.stringify(data);
     });
 }
 
 function openDialog() {
-  Office.context.ui.displayDialogAsync(
-    "https://sharpdevexpert.github.io/src/dialog.html",
-    { displayInIframe: true },
-    null
-  );
+  Office.context.ui.displayDialogAsync("https://localhost:3000/src/dialog.html", { displayInIframe: true }, null);
 }
 
 Office.actions.associate("generate", generate);
