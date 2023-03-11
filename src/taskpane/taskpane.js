@@ -10,8 +10,6 @@
 var messageBanner;
 
 var localStorageToken = "rfpninjatoken";
-
-var proxyServer = "https://cors-anywhere.herokuapp.com/";
 var loginEndPoint = "https://app.rfpninja.com/version-test/api/1.1/wf/remote-login";
 
 Office.onReady((info) => {
@@ -36,7 +34,7 @@ function loginFunc() {
   var password = $("#password").val();
 
   $.ajax({
-    url: proxyServer + loginEndPoint,
+    url: loginEndPoint,
     type: "POST",
     data: JSON.stringify({
       username: username,

@@ -48,8 +48,6 @@ g.action = action;
 var dialog;
 
 var localStorageToken = "rfpninjatoken";
-
-var proxyServer = "https://cors-anywhere.herokuapp.com/";
 var endPoint = "https://app.rfpninja.com/version-test/api/1.1/wf/get-prompt-response";
 
 function generate(event) {
@@ -70,7 +68,7 @@ function callService(question) {
   var token = window.localStorage.getItem(localStorageToken);
 
   $.ajax({
-    url: proxyServer + endPoint,
+    url: endPoint,
     type: "POST",
     data: JSON.stringify({
       prompt: question,
@@ -132,7 +130,7 @@ function callService(question) {
 
 function openDialog() {
   Office.context.ui.displayDialogAsync(
-    "https://sharpdevexpert.github.io/src/dialog.html",
+    "https://localhost:3000/dialog.html",
     { height: 10, width: 15, displayInIframe: true },
     function (asyncResult) {
       dialog = asyncResult.value;
