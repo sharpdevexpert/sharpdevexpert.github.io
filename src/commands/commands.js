@@ -48,6 +48,8 @@ g.action = action;
 var dialog;
 
 var localStorageToken = "rfpninjatoken";
+var localStorageDataSet = "rfpninjadataset";
+
 var endPoint = "https://app.rfpninja.com/version-test/api/1.1/wf/get-prompt-response";
 
 function generate(event) {
@@ -56,8 +58,8 @@ function generate(event) {
       //write('Action failed. Error: ' + asyncResult.error.message);
     } else {
       var question = asyncResult.value;
-      callService(question);
-      openDialog();
+      callService(question.trim());
+      document.body.style.cursor = "wait";
     }
   });
 
@@ -66,6 +68,7 @@ function generate(event) {
 
 function callService(question) {
   var token = window.localStorage.getItem(localStorageToken);
+  var dataset = window.localStorage.getItem(localStorageDataSet);
 
   $.ajax({
     url: endPoint,
@@ -73,7 +76,7 @@ function callService(question) {
     data: JSON.stringify({
       prompt: question,
       format: "Mutiple Paragraphs",
-      dataset: "Sales",
+      dataset: dataset,
     }),
     contentType: "application/json",
     headers: {
@@ -89,7 +92,7 @@ function callService(question) {
         if (!data.response["returned-an-error"]) {
           var prompt = "";
 
-          if (!data.response.prompt) {
+          if (data.response.prompt) {
             prompt = data.response.prompt;
           }
 
