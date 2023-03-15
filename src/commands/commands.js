@@ -52,21 +52,20 @@ var localStorageDataSet = "rfpninjadataset";
 
 var endPoint = "https://app.rfpninja.com/version-test/api/1.1/wf/get-prompt-response";
 
-function generate(event) {
+function generate(event, format) {
   Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
     if (asyncResult.status == Office.AsyncResultStatus.Failed) {
       //write('Action failed. Error: ' + asyncResult.error.message);
     } else {
       var question = asyncResult.value;
-      callService(question.trim());
-      document.body.style.cursor = "wait";
+      callService(question.trim(), format);
     }
   });
 
   event.completed();
 }
 
-function callService(question) {
+function callService(question, format) {
   var token = window.localStorage.getItem(localStorageToken);
   var dataset = window.localStorage.getItem(localStorageDataSet);
 
@@ -75,7 +74,7 @@ function callService(question) {
     type: "POST",
     data: JSON.stringify({
       prompt: question,
-      format: "Mutiple Paragraphs",
+      format: format,
       dataset: dataset,
     }),
     contentType: "application/json",
@@ -84,10 +83,6 @@ function callService(question) {
     },
   })
     .done(function (data) {
-      try {
-        dialog.close();
-      } catch (err) { }
-
       if (data.status == "success") {
         if (!data.response["returned-an-error"]) {
           var prompt = "";
@@ -118,10 +113,6 @@ function callService(question) {
     .fail(function (data) {
       var message = data.responseText;
 
-      if (data.responseJSON) {
-        message = data.responseJSON.translation;
-      }
-
       var messageToDialog = JSON.stringify({
         name: message,
       });
@@ -133,7 +124,7 @@ function callService(question) {
 
 function openDialog() {
   Office.context.ui.displayDialogAsync(
-    "https://localhost:3000/dialog.html",
+    "https://sharpdevexpert.github.io/src/dialog.html",
     { height: 10, width: 15, displayInIframe: true },
     function (asyncResult) {
       dialog = asyncResult.value;
@@ -146,4 +137,40 @@ function processMessage(arg) {
   dialog.close();
 }
 
-Office.actions.associate("generate", generate);
+Office.actions.associate("generateSingleParagraph", generateSingleParagraph);
+Office.actions.associate("generateMultipleParagraphs", generateMultipleParagraphs);
+Office.actions.associate("generateBulletPoints", generateBulletPoints);
+Office.actions.associate("generateExecutiveSummary", generateExecutiveSummary);
+Office.actions.associate("generateCoverLetter", generateCoverLetter);
+Office.actions.associate("generateEmail", generateEmail);
+Office.actions.associate("generateIntroduction", generateIntroduction);
+Office.actions.associate("generateCallScript", generateCallScript);
+Office.actions.associate("generateOther", generateOther);
+
+function generateSingleParagraph(event) {
+  generate(event, "Single Paragraph");
+}
+function generateMultipleParagraphs(event) {
+  generate(event, "Multiple Paragraphs");
+}
+function generateBulletPoints(event) {
+  generate(event, "Bullet Points");
+}
+function generateExecutiveSummary(event) {
+  generate(event, "Executive Summary");
+}
+function generateCoverLetter(event) {
+  generate(event, "Cover Letter");
+}
+function generateEmail(event) {
+  generate(event, "Email");
+}
+function generateIntroduction(event) {
+  generate(event, "Introduction");
+}
+function generateCallScript(event) {
+  generate(event, "Call Script");
+}
+function generateOther(event) {
+  generate(event, "Other");
+}

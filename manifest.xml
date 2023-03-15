@@ -69,7 +69,7 @@
           </ExtensionPoint>
           <ExtensionPoint xsi:type="ContextMenu">
             <OfficeMenu id="ContextMenuText">
-                <Control xsi:type="Button" id="Button1Id1">
+                <Control xsi:type="Menu" id="Button1Id1">
                     <Label resid="ContextMenu.Label" />
                     <Tooltip resid="ContextMenu.ToolTip" />
                     <Supertip>
@@ -81,9 +81,143 @@
                       <bt:Image size="32" resid="LogoBlue32x32" />
                       <bt:Image size="80" resid="LogoBlue80x80" />
                     </Icon>
-                    <Action xsi:type="ExecuteFunction">
-                      <FunctionName>generate</FunctionName>
-                    </Action>
+                    <Items>
+                      <Item id="SingleParagraph">
+                        <Label resid="CtxMnu.lbl.Single"/>
+                        <Supertip>
+                            <Title resid="CtxMnu.lbl.Single"/>
+                            <Description resid="CtxMnu.tt.Single"/>
+                        </Supertip>
+                        <Icon>
+                          <bt:Image size="16" resid="LogoBlue16x16" />
+                          <bt:Image size="32" resid="LogoBlue32x32" />
+                          <bt:Image size="80" resid="LogoBlue80x80" />
+                        </Icon>
+                        <Action xsi:type="ExecuteFunction">
+                          <FunctionName>generateSingleParagraph</FunctionName>
+                        </Action>
+                      </Item>
+                      <Item id="MultipleParagraphs">
+                        <Label resid="CtxMnu.lbl.Multiple"/>
+                        <Supertip>
+                            <Title resid="CtxMnu.lbl.Multiple"/>
+                            <Description resid="CtxMnu.tt.Multiple"/>
+                        </Supertip>
+                        <Icon>
+                          <bt:Image size="16" resid="LogoBlue16x16" />
+                          <bt:Image size="32" resid="LogoBlue32x32" />
+                          <bt:Image size="80" resid="LogoBlue80x80" />
+                        </Icon>
+                        <Action xsi:type="ExecuteFunction">
+                          <FunctionName>generateMultipleParagraphs</FunctionName>
+                        </Action>
+                      </Item>
+                      <Item id="BulletPoints">
+                        <Label resid="CtxMnu.lbl.Bullet"/>
+                        <Supertip>
+                            <Title resid="CtxMnu.lbl.Bullet"/>
+                            <Description resid="CtxMnu.tt.Bullet"/>
+                        </Supertip>
+                        <Icon>
+                          <bt:Image size="16" resid="LogoBlue16x16" />
+                          <bt:Image size="32" resid="LogoBlue32x32" />
+                          <bt:Image size="80" resid="LogoBlue80x80" />
+                        </Icon>
+                        <Action xsi:type="ExecuteFunction">
+                          <FunctionName>generateBulletPoints</FunctionName>
+                        </Action>
+                      </Item>
+                      <Item id="ExecutiveSummary">
+                        <Label resid="CtxMnu.lbl.Executive"/>
+                        <Supertip>
+                            <Title resid="CtxMnu.lbl.Executive"/>
+                            <Description resid="CtxMnu.tt.Executive"/>
+                        </Supertip>
+                        <Icon>
+                          <bt:Image size="16" resid="LogoBlue16x16" />
+                          <bt:Image size="32" resid="LogoBlue32x32" />
+                          <bt:Image size="80" resid="LogoBlue80x80" />
+                        </Icon>
+                        <Action xsi:type="ExecuteFunction">
+                          <FunctionName>generateExecutiveSummary</FunctionName>
+                        </Action>
+                      </Item>
+                      <Item id="CoverLetter">
+                        <Label resid="CtxMnu.lbl.Cover"/>
+                        <Supertip>
+                            <Title resid="CtxMnu.lbl.Cover"/>
+                            <Description resid="CtxMnu.tt.Cover"/>
+                        </Supertip>
+                        <Icon>
+                          <bt:Image size="16" resid="LogoBlue16x16" />
+                          <bt:Image size="32" resid="LogoBlue32x32" />
+                          <bt:Image size="80" resid="LogoBlue80x80" />
+                        </Icon>
+                        <Action xsi:type="ExecuteFunction">
+                          <FunctionName>generateCoverLetter</FunctionName>
+                        </Action>
+                      </Item>
+                      <Item id="Email">
+                        <Label resid="CtxMnu.lbl.Email"/>
+                        <Supertip>
+                            <Title resid="CtxMnu.lbl.Email"/>
+                            <Description resid="CtxMnu.tt.Email"/>
+                        </Supertip>
+                        <Icon>
+                          <bt:Image size="16" resid="LogoBlue16x16" />
+                          <bt:Image size="32" resid="LogoBlue32x32" />
+                          <bt:Image size="80" resid="LogoBlue80x80" />
+                        </Icon>
+                        <Action xsi:type="ExecuteFunction">
+                          <FunctionName>generateEmail</FunctionName>
+                        </Action>
+                      </Item>
+                      <Item id="Introduction">
+                        <Label resid="CtxMnu.lbl.Introduction"/>
+                        <Supertip>
+                            <Title resid="CtxMnu.lbl.Introduction"/>
+                            <Description resid="CtxMnu.tt.Introduction"/>
+                        </Supertip>
+                        <Icon>
+                          <bt:Image size="16" resid="LogoBlue16x16" />
+                          <bt:Image size="32" resid="LogoBlue32x32" />
+                          <bt:Image size="80" resid="LogoBlue80x80" />
+                        </Icon>
+                        <Action xsi:type="ExecuteFunction">
+                          <FunctionName>generateIntroduction</FunctionName>
+                        </Action>
+                      </Item>
+                      <Item id="CallScript">
+                        <Label resid="CtxMnu.lbl.Call"/>
+                        <Supertip>
+                            <Title resid="CtxMnu.lbl.Call"/>
+                            <Description resid="CtxMnu.tt.Call"/>
+                        </Supertip>
+                        <Icon>
+                          <bt:Image size="16" resid="LogoBlue16x16" />
+                          <bt:Image size="32" resid="LogoBlue32x32" />
+                          <bt:Image size="80" resid="LogoBlue80x80" />
+                        </Icon>
+                        <Action xsi:type="ExecuteFunction">
+                          <FunctionName>generateCallScript</FunctionName>
+                        </Action>
+                      </Item>
+                      <Item id="Other">
+                        <Label resid="CtxMnu.lbl.Other"/>
+                        <Supertip>
+                            <Title resid="CtxMnu.lbl.Other"/>
+                            <Description resid="CtxMnu.tt.Other"/>
+                        </Supertip>
+                        <Icon>
+                          <bt:Image size="16" resid="LogoBlue16x16" />
+                          <bt:Image size="32" resid="LogoBlue32x32" />
+                          <bt:Image size="80" resid="LogoBlue80x80" />
+                        </Icon>
+                        <Action xsi:type="ExecuteFunction">
+                          <FunctionName>generateOther</FunctionName>
+                        </Action>
+                      </Item>
+                    </Items>
                 </Control>
             </OfficeMenu>
           </ExtensionPoint>
@@ -108,11 +242,29 @@
         <bt:String id="TaskpaneButton.Label" DefaultValue="Log in"/>
         <bt:String id="GenerateButton.Label" DefaultValue="Ninja Generate"/>
         <bt:String id="ContextMenu.Label" DefaultValue="Ninja Generate"/>
+        <bt:String id="CtxMnu.lbl.Single" DefaultValue="Single Paragraph"/>
+        <bt:String id="CtxMnu.lbl.Multiple" DefaultValue="Multiple Paragraphs"/>
+        <bt:String id="CtxMnu.lbl.Bullet" DefaultValue="Bullet Points"/>
+        <bt:String id="CtxMnu.lbl.Executive" DefaultValue="Executive Summary"/>
+        <bt:String id="CtxMnu.lbl.Cover" DefaultValue="Cover Letter"/>
+        <bt:String id="CtxMnu.lbl.Email" DefaultValue="Email"/>
+        <bt:String id="CtxMnu.lbl.Introduction" DefaultValue="Introduction"/>
+        <bt:String id="CtxMnu.lbl.Call" DefaultValue="Call Script"/>
+        <bt:String id="CtxMnu.lbl.Other" DefaultValue="Other"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Log in"/>
         <bt:String id="GenerateButton.Tooltip" DefaultValue="Generate selected text"/>
         <bt:String id="ContextMenu.ToolTip" DefaultValue="Generate selected text"/>
+        <bt:String id="CtxMnu.tt.Single" DefaultValue="Single Paragraph"/>
+        <bt:String id="CtxMnu.tt.Multiple" DefaultValue="Multiple Paragraphs"/>
+        <bt:String id="CtxMnu.tt.Bullet" DefaultValue="Bullet Points"/>
+        <bt:String id="CtxMnu.tt.Executive" DefaultValue="Executive Summary"/>
+        <bt:String id="CtxMnu.tt.Cover" DefaultValue="Cover Letter"/>
+        <bt:String id="CtxMnu.tt.Email" DefaultValue="Email"/>
+        <bt:String id="CtxMnu.tt.Introduction" DefaultValue="Introduction"/>
+        <bt:String id="CtxMnu.tt.Call" DefaultValue="Call Script"/>
+        <bt:String id="CtxMnu.tt.Other" DefaultValue="Other"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
