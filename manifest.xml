@@ -363,9 +363,9 @@
         <bt:Image id="LogoBlue16x16" DefaultValue="https://sharpdevexpert.github.io/assets/LogoBlue16x16.png"/>
         <bt:Image id="LogoBlue32x32" DefaultValue="https://sharpdevexpert.github.io/assets/LogoBlue32x32.png"/>
         <bt:Image id="LogoBlue80x80" DefaultValue="https://sharpdevexpert.github.io/assets/LogoBlue80x80.png"/>
-        <bt:Image id="LogoTextBlue16x16" DefaultValue="https://sharpdevexpert.github.io/assets/LogoTextBlue16x16.png"/>
-        <bt:Image id="LogoTextBlue32x32" DefaultValue="https://sharpdevexpert.github.io/assets/LogoTextBlue32x32.png"/>
-        <bt:Image id="LogoTextBlue80x80" DefaultValue="https://sharpdevexpert.github.io/assets/LogoTextBlue80x80.png"/>
+        <!-- <bt:Image id="LogoTextBlue16x16" DefaultValue="https://sharpdevexpert.github.io/assets/LogoBlue16x16.png"/>
+        <bt:Image id="LogoTextBlue32x32" DefaultValue="https://sharpdevexpert.github.io/assets/LogoBlue32x32.png"/>
+        <bt:Image id="LogoTextBlue80x80" DefaultValue="https://sharpdevexpert.github.io/assets/LogoBlue80x80.png"/> -->
       </bt:Images>
       <bt:Urls>
         <bt:Url id="Commands.Url" DefaultValue="https://sharpdevexpert.github.io/src/commands/commands.html"/>
