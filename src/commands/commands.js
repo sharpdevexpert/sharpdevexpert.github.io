@@ -69,8 +69,6 @@ function callService(question, format) {
   var token = window.localStorage.getItem(localStorageToken);
   var dataset = window.localStorage.getItem(localStorageDataSet);
 
-  document.body.style.cursor = "wait !important";
-
   $.ajax({
     url: endPoint,
     type: "POST",
@@ -89,11 +87,11 @@ function callService(question, format) {
         if (!data.response["returned-an-error"]) {
           var prompt = "";
 
-          if (data.response.prompt) {
-            prompt = data.response.prompt;
+          if (data.response.prompt && data.response.prompt != "null") {
+            prompt = data.response.prompt + " ";
           }
 
-          Office.context.document.setSelectedDataAsync(prompt + " " + data.response.response, function (asyncResult) {
+          Office.context.document.setSelectedDataAsync(prompt + data.response.response, function (asyncResult) {
             if (asyncResult.status === "failed") {
               // Show error message.
             } else {
