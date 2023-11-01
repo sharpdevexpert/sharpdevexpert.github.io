@@ -45,7 +45,7 @@ const g = getGlobal();
 // The add-in command functions need to be available in global scope
 g.action = action;
 
-var dialog;
+let dialog;
 
 var localStorageToken = "rfpninjatoken";
 var localStorageDataSet = "rfpninjadataset";
