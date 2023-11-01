@@ -69,6 +69,8 @@ function callService(question, format) {
   var token = window.localStorage.getItem(localStorageToken);
   var dataset = window.localStorage.getItem(localStorageDataSet);
 
+  document.body.style.cursor = "wait !important";
+
   $.ajax({
     url: endPoint,
     type: "POST",
@@ -91,7 +93,7 @@ function callService(question, format) {
             prompt = data.response.prompt;
           }
 
-          Office.context.document.setSelectedDataAsync(prompt + data.response.response, function (asyncResult) {
+          Office.context.document.setSelectedDataAsync(prompt + " " + data.response.response, function (asyncResult) {
             if (asyncResult.status === "failed") {
               // Show error message.
             } else {
