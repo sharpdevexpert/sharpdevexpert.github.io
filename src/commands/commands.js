@@ -134,7 +134,7 @@ function openDialog() {
 }
 
 function processMessage(arg) {
-  dialog.close();
+  //dialog.close();
 }
 
 Office.actions.associate("generateSingleParagraph", generateSingleParagraph);
