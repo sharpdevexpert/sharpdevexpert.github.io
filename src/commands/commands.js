@@ -128,13 +128,14 @@ function openDialog() {
     { height: 10, width: 15, displayInIframe: true },
     function (asyncResult) {
       dialog = asyncResult.value;
+      dialog.addEventHandler(Office.EventType.DialogEventReceived, processMessage);
       dialog.addEventHandler(Office.EventType.DialogMessageReceived, processMessage);
     }
   );
 }
 
 function processMessage(arg) {
-  //dialog.close();
+  dialog.close();
 }
 
 Office.actions.associate("generateSingleParagraph", generateSingleParagraph);
