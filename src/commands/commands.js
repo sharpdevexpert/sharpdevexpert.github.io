@@ -88,7 +88,7 @@ function callService(question, format) {
           var prompt = "";
 
           if (data.response.prompt && data.response.prompt != "null") {
-            prompt = data.response.prompt + " ";
+            prompt = data.response.prompt + " \n";
           }
 
           Office.context.document.setSelectedDataAsync(prompt + data.response.response, function (asyncResult) {
